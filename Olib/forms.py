@@ -16,8 +16,7 @@ class Signup_Form(UserCreationForm):
            'username': forms.TextInput(attrs={'class': 'form-control'}),
            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
            'password': forms.TextInput(attrs={'class': 'form-control'}),
-
-
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class Login_Form(UserCreationForm):
@@ -34,6 +33,6 @@ class UserProfileForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    photo = forms.ImageField(required=False)
-    phone = forms.CharField(max_length=15, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    photo = forms.ImageField(required=True)
+    phone = forms.CharField(max_length=15, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
 

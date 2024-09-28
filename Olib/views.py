@@ -1,13 +1,16 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.contrib import messages , sessions
+from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model,logout
 from django.contrib.auth.decorators import login_required
-from Olib.forms import Login_Form, Signup_Form ,UserProfileForm
-from .models import user_collection
+from Olib.forms import Login_Form, Signup_Form, UserProfileForm
+from .models import user_collection  # Assuming this is your custom model for user profiles
 import logging
+from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
 # Create your views here.
 
@@ -15,9 +18,8 @@ import logging
 # Set up logger
 logger = logging.getLogger(__name__)
 
-
+@login_required
 def index(request):
-
     return render(request,"index.html");
 
 def sign_up(request):
@@ -25,6 +27,7 @@ def sign_up(request):
         username = request.POST.get('username')
         first_name = request.POST.get('fullname')
         password = request.POST.get('password')
+        email= request.POST.get('email')
 
         user = User.objects.filter(username = username)
         if user.exists():
@@ -34,6 +37,7 @@ def sign_up(request):
         user = User.objects.create(
             username = username,
             first_name = first_name,
+            email = email,
         )
         user.set_password(password)
         user.save()
@@ -48,38 +52,32 @@ def log_in(request):
 
     if request.method == 'POST':
         username = request.POST.get('username')
-
-        # Session create
-        request.session['name'] = username
-        # request.session.set_expiry(20)
-
         password = request.POST.get('password')
 
         if not User.objects.filter(username=username).exists():
             messages.info(request, "Invalid Username or password")
             return redirect('/login')
 
-
-
-        user = authenticate(request,username=username,password=password)
+        user = authenticate(request, username=username, password=password)
 
         if user is None:
-            messages.info(request, "Invalid")
+            messages.info(request, "Invalid Credentials")
             return redirect('/login')
 
         else:
-            login(request,user)
-            messages.info(request, "log in Succusfully")
-            # return redirect('/home')
-    return render(request , "sign-in.html")
+            login(request, user)
+            messages.info(request, "Logged in Successfully")
+            return redirect('/home')  # Redirect to profile view after successful login
+    return render(request, "sign-in.html")
 
 def user_logout(request):
-   logout(request)
-   return HttpResponse("<strong>You are logged out.</strong> <a href='login'>login</a>")
-
+    logout(request)
+    messages.success(request, "You have been logged out successfully.")
+    storage = messages.get_messages(request)
+    storage.used = True  # Mark messages as used so they won't appear again
+    return HttpResponse("<strong>You are logged out.</strong> <a href='login'>login</a>")
 
 def forgot_password(request):
-
     # user = User
     if request.method =='POST':
         username = request.POST.get('username')
@@ -92,50 +90,45 @@ def forgot_password(request):
         return redirect('/login')
     return render(request,"forgot-password.html")
 
-
+@login_required
 def profile(request):
-    user_id = request.session.get('user_id')
-
-    if user_id:
-        # Fetch user data from MongoDB using the session's user ID
-        user_data = user_collection.find_one({"user_id": user_id})
-
-        if user_data:
-            return render(request, 'myaccount.html', {'user': user_data})  # Display stored data
-
-    # If the user is visiting for the first time or doesn't exist in MongoDB
+    user = request.user
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            user_profile = {
-                "user_id": request.session.session_key,  # Store session key as user ID
-                "name": request.POST.get('name'),
-                "username": request.POST.get('username'),
-                "email": request.POST.get('email'),
-                "phone": request.POST.get('phone'),
-                "photo": request.POST.get('photo')
-            }
+        # Retrieve updated data from the form
+        full_name = request.POST.get('name')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
 
-            print(user_profile)
+        # Update user fields
+        user.first_name = full_name
+        user.username = username
+        user.email = email
+        user.save()
 
-            try:
-                user_collection.insert_one(user_profile)  # Save the data to MongoDB
-                # Save the user ID in the session
-                messages.success(request, ('Your Profile Is Updated.'))
-                request.session['user_id'] = request.session.session_key
-                return redirect('home')
-            except Exception as e:
-                logger.error(f"Error occurred while inserting data into MongoDB: {e}")
-                return HttpResponse("<h3>Error occurred while saving data.</h3>")
+        return redirect('profile')
+    test = {
+        "user_id": request.session.session_key,  # Store session key as user ID
+        "name": user.first_name,
+        "username": user.username,
+        "email" :user.email,
+    }
+
+    user_collection.update_one(
+        {"user_id": request.session.session_key},  # Find the document by session key
+        {"$set": test},  # Update the document with the new data
+        upsert=True  # Insert a new document if it doesn't exist
+    )
 
 
-    else:
-        form = UserProfileForm()
-
-    return render(request, 'myaccount.html', {'form': form})
+    return render(request, 'myaccount.html',{'user': user})
 
 
 def getAllUser(request):
     users = list(user_collection.find())
     users_list = "<br>".join([f"{user['name']} - {user['username']} - {user['email']}" for user in users])  # Format users for display
     return HttpResponse(users_list)
+
+def view_book(request):
+
+    return render(request,"book-overview.html")
+

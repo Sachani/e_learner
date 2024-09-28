@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="static/main-books.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/EduCat (4)_rm.png">
+    <link rel="shortcut icon" type="image/x-icon" href="media/EduCat (4)_rm.png">
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,233 +37,298 @@
 
 <body>
 
-    <!-- Header START -->
-    <header>
-        <nav class="navigation">
-            <div class="logo">
-                <a href="Index.html"><img src="media/E-Learning-removebg-preview.png" alt="Logo"
-                        style="height: 150px;"></a>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <!-- <a href="#" style="display: flex; align-items: center;"><img src="assets/img/search.svg" alt="search" height="25px" width="25px"></a> -->
-            </div>
-            <button class="menu-btn">☰</button>
-            <div class="sidebar">
-                <div class="menu-content">
-                    <a href="" class="buttons">My Books</a>
-                    <a href="" class="buttons">Completed Books</a>
-                    <a href="" class="buttons" style="color:red; font-size: 1rem">❤</a>
-                    <!-- <a href="myaccount-security.php" class="buttons ">Security</a> -->
-                    <a href="profile" class="buttons">My Profile</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- Header END -->
-
-    <!-- Banner Slider START -->
-    <div class="container">
-
-        <!-- Banners -->
-
-        <div class="image">
-            <div class="banner">
-                <div class="lbanner">
-                    <h2>New Course Uploaded</h2>
-                    <h1>Maths Book</h1>
-                    <h4 style="color: white;">Author: Shree Shree Shree Priyanshu Pithadiya Sir</h4>
-                    <a href="#">See Book</a>
-                </div>
-                <div class="rbanner">
-                    <img src="media/teacher.png" alt="">
-                </div>
+<!-- Header START -->
+<header>
+    <nav class="navigation">
+        <div class="logo">
+            <a href="Index.html"><img src="media/E-Learning-removebg-preview.png" alt="Logo"
+                                      style="height: 150px;"></a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <!-- <a href="#" style="display: flex; align-items: center;"><img src="assets/img/search.svg" alt="search" height="25px" width="25px"></a> -->
+        </div>
+        <button class="menu-btn">☰</button>
+        <div class="sidebar">
+            <div class="menu-content">
+                <a href="mycourse.php" class="buttons">My Books</a>
+                <!-- <a href="mycourse-completed.php" class="buttons">Completed Books</a> -->
+                <a href="mycourse-favourites.php" class="buttons" style="color:red; font-size: 1rem">❤</a>
+                <!-- <a href="myaccount-security.php" class="buttons ">Security</a> -->
+                <a href="profile" class="buttons">My Profile</a>
             </div>
         </div>
+    </nav>
+</header>
+<!-- Header END -->
 
+<!-- Banner Slider START -->
+<div class="container">
 
-        <div class="image">
-            <div class="banner">
-                <div class="lbanner">
-                    <h2>New Course Uploaded</h2>
-                    <h1>Python Book</h1>
-                    <h4 style="color: white;">Author: Shree Shree Shree Priyanshu Pithadiya Sir</h4>
-                    <a href="#">See Book</a>
-                </div>
-                <div class="rbanner">
-                    <img src="media/teacher.png" alt="">
-                </div>
+    <!-- Banners -->
+
+    <div class="image">
+        <div class="banner">
+            <div class="lbanner">
+                <h2>New Course Uploaded</h2>
+                <h1>Maths Book</h1>
+                <h4 style="color: white;">Author: Shree Shree Shree Priyanshu Pithadiya Sir</h4>
+                <a href="#">See Book</a>
             </div>
-        </div>
-
-
-        <!-- buttons -->
-        <div class="button">
-            <a onclick="nextimg(-1)" class="prev"><</a>
-            <a onclick="nextimg(1)" class="next">></a>
+            <div class="rbanner">
+                <img src="media/teacher.png" alt="">
+            </div>
         </div>
     </div>
-    <!-- Banner Slider END -->
 
-    <!-- Course Slider START -->
-    <div class="container" style="margin-bottom: 15px; height: auto;">
-        <center>
-            <h1>All Books</h1>
-        </center>
-        <div class="Allbooks">
 
-            <!-- Book start -->
-            <a href="book-overview.html" class="book" style="text-decoration: none; color: black;">
-                <div class="bookleft" style="background-image: url('media/book.jpeg');">
-                </div>
-                <div class="bookright">
-                    <h3>Kallu kalia</h3>
-                    <h3 style="color: #484848;">Mr. PYS Pithadiya</h3>
-                    <h3 style="color: #505050;">This book is very useful for learning about maths by kallu kalia</h3>
-                </div>
-            </a>
-            <!-- Book End -->
-
+    <div class="image">
+        <div class="banner">
+            <div class="lbanner">
+                <h2>New Course Uploaded</h2>
+                <h1>Python Book</h1>
+                <h4 style="color: white;">Author: Shree Shree Shree Priyanshu Pithadiya Sir</h4>
+                <a href="#">See Book</a>
+            </div>
+            <div class="rbanner">
+                <img src="media/teacher.png" alt="">
+            </div>
         </div>
     </div>
-    <!-- Course Slider END -->
-
-    <!-- Course Panel with sidebar START -->
 
 
-    <!-- FAQ END -->
+    <!-- buttons -->
+    <div class="button">
+        <a onclick="nextimg(-1)" class="prev"><</a>
+        <a onclick="nextimg(1)" class="next">></a>
+    </div>
+</div>
+<!-- Banner Slider END -->
 
-    <!-- Footer START -->
-    <footer class="footer-distributed">
+<!-- Course Slider START -->
+<div class="container" style="margin-bottom: 15px; height: auto;">
+    <center>
+        <h1>All Books</h1>
+    </center>
+    <div class="Allbooks">
 
-        <div class="footer-left">
+        <!-- Book start -->
+        <a href="view_book" class="book" style="text-decoration: none; color: black;">
+            <div class="bookleft">
+                <img src="media/book.jpeg" alt="" style="height: 100%; width: 100%;">
+            </div>
+            <div class="bookright">
+                <h3>Mathematics</h3>
+                <h3 style="color: #484848;">Mr. Priyanshu Pithadiya</h3>
+                <h3 style="color: #505050;">This book is very useful for learning about maths by Priyanshu</h3>
+            </div>
+        </a>
+        <!-- Book End -->
 
-            <img src="media/E-Learning-removebg-preview.png" alt="E-learning">
+        <!-- Book start -->
+        <a href="view_book" class="book" style="text-decoration: none; color: black;">
+            <div class="bookleft">
+                <img src="media/book2.png" alt="" style="height: 100%; width: 100%;">
+            </div>
+            <div class="bookright">
+                <h3>Mathematics</h3>
+                <h3 style="color: #484848;">Mr. Aryan Patel</h3>
+                <h3 style="color: #505050;">This book is very useful for learning about maths by Aryan</h3>
+            </div>
+        </a>
+        <!-- Book End -->
 
-            <p class="footer-links">
-                <a href="index.php" class="link-1">Home</a>
-                <a href="termsandconditions.php">Terms & Condition</a>
-                <a href="privacypolicy.php">Privacy Policy</a>
-                <a href="refundpolicy.php">Refund Policy</a>
-                <a href="contact.php">Contact</a>
-            </p>
+        <!-- Book start -->
+        <a href="view_book" class="book" style="text-decoration: none; color: black;">
+            <div class="bookleft">
+                <img src="media/book3.png" alt="" style="height: 100%; width: 100%;">
+            </div>
+            <div class="bookright">
+                <h3>Mathematics</h3>
+                <h3 style="color: #484848;">Mr. Rangat Prajapati</h3>
+                <h3 style="color: #505050;">This book is very useful for learning about maths by Rangat</h3>
+            </div>
+        </a>
+        <!-- Book End -->
 
-            <p class="footer-company-name">E-learner © 2023</p>
-        </div>
+        <!-- Book start -->
+        <a href="view_book" class="book" style="text-decoration: none; color: black;">
+            <div class="bookleft">
+                <img src="media/book2.png" alt="" style="height: 100%; width: 100%;">
+            </div>
+            <div class="bookright">
+                <h3>Mathematics</h3>
+                <h3 style="color: #484848;">Mr. Aayush Rana</h3>
+                <h3 style="color: #505050;">This book is very useful for learning about maths by Aayush</h3>
+            </div>
+        </a>
+        <!-- Book End -->
 
-        <div class="footer-center">
+        <!-- Book start -->
+        <a href="view_book" class="book" style="text-decoration: none; color: black;">
+            <div class="bookleft">
+                <img src="media/book.jpeg" alt="" style="height: 100%; width: 100%;">
+            </div>
+            <div class="bookright">
+                <h3>Mathematics</h3>
+                <h3 style="color: #484848;">Mr. Pavan Prajapati</h3>
+                <h3 style="color: #505050;">This book is very useful for learning about maths by Pavan</h3>
+            </div>
+        </a>
+        <!-- Book End -->
 
-            <div>
-                <i class="fa fa-map-marker"></i>
-                <p><span>Contact us:</span>
-                    <span class="footer-connect-list">Address: <span class="fcl-data">LDRP, Sector-15,
+        <!-- Book start -->
+        <a href="view_book" class="book" style="text-decoration: none; color: black;">
+            <div class="bookleft">
+                <img src="media/book2.png" alt="" style="height: 100%; width: 100%;">
+            </div>
+            <div class="bookright">
+                <h3>Mathematics</h3>
+                <h3 style="color: #484848;">Mr. PYS Pithadiya</h3>
+                <h3 style="color: #505050;">This book is very useful for learning about maths by Priyanshu</h3>
+            </div>
+        </a>
+        <!-- Book End -->
+    </div>
+</div>
+<!-- Course Slider END -->
+
+<!-- Course Panel with sidebar START -->
+
+
+<!-- FAQ END -->
+
+<!-- Footer START -->
+<footer class="footer-distributed">
+
+    <div class="footer-left">
+
+        <img src="media/E-Learning-removebg-preview.png" alt="E-learning">
+
+        <p class="footer-links">
+            <a href="index.php" class="link-1">Home</a>
+            <a href="termsandconditions.php">Terms & Condition</a>
+            <a href="privacypolicy.php">Privacy Policy</a>
+            <a href="refundpolicy.php">Refund Policy</a>
+            <a href="contact.php">Contact</a>
+        </p>
+
+        <p class="footer-company-name">E-learner © 2023</p>
+    </div>
+
+    <div class="footer-center">
+
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Contact us:</span>
+                <span class="footer-connect-list">Address: <span class="fcl-data">LDRP, Sector-15,
                             Gandhinagar</span>
                     </span>
-                    <span class="footer-connect-list">Contact Number: <span class="fcl-data">
+                <span class="footer-connect-list">Contact Number: <span class="fcl-data">
                             +91 9978343950
                         </span>
                         <span class="footer-connect-list">Email: <span class="fcl-data">
                                 priyanshu2512a@gmail.com
                             </span>
                         </span>
-                </p>
-            </div>
-
-        </div>
-
-        <div class="footer-right">
-
-            <p class="footer-company-about">
-                <span>About E-Learning?</span>
-                Our e-Library provides easy access to a wide range of digital books, journals, and academic resources.
-                We aim to make learning and research accessible to everyone.
             </p>
-
         </div>
-    </footer>
-    <!-- Footer END -->
 
-    <script>
-        const mainClass = document.getElementsByClassName('contentBox')
-        for (i = 0; i < mainClass.length; i++) {
-            mainClass[i].addEventListener('click', function () {
-                this.classList.toggle('active')
-            })
+    </div>
+
+    <div class="footer-right">
+
+        <p class="footer-company-about">
+            <span>About E-Learning?</span>
+            Our e-Library provides easy access to a wide range of digital books, journals, and academic resources.
+            We aim to make learning and research accessible to everyone.
+        </p>
+
+    </div>
+</footer>
+<!-- Footer END -->
+
+<script>
+    const mainClass = document.getElementsByClassName('contentBox')
+    for (i = 0; i < mainClass.length; i++) {
+        mainClass[i].addEventListener('click', function () {
+            this.classList.toggle('active')
+        })
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        freeMode: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+</script>
+<script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+
+    menuBtn.addEventListener('click', function () {
+        this.classList.toggle('active');
+        if (this.classList.contains('active')) {
+            document.addEventListener('click', closeSidebarOnClickOutside);
+        } else {
+            document.removeEventListener('click', closeSidebarOnClickOutside);
         }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            freeMode: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
-    </script>
-    <script>
-        const menuBtn = document.querySelector('.menu-btn');
-        const sidebar = document.querySelector('.sidebar');
+    });
 
-        menuBtn.addEventListener('click', function () {
-            this.classList.toggle('active');
-            if (this.classList.contains('active')) {
-                document.addEventListener('click', closeSidebarOnClickOutside);
-            } else {
-                document.removeEventListener('click', closeSidebarOnClickOutside);
-            }
-        });
+    function closeSidebarOnClickOutside(event) {
+        if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+            menuBtn.classList.remove('active');
+            document.removeEventListener('click', closeSidebarOnClickOutside);
+        }
+    }
 
-        function closeSidebarOnClickOutside(event) {
-            if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
-                menuBtn.classList.remove('active');
-                document.removeEventListener('click', closeSidebarOnClickOutside);
-            }
+    var imageno = 1;
+    displayimg(imageno);
+
+    function nextimg(n) {
+        displayimg(imageno += n)
+    }
+
+    function currentSlide(n) {
+        displayimg(imageno = n)
+    }
+
+    function displayimg(n) {
+        var i;
+        var image = document.getElementsByClassName("image");
+        var dots = document.getElementsByClassName("dot");
+
+        if (n > image.length) {
+            imageno = 1;
         }
 
-        var imageno = 1;
-        displayimg(imageno);
-
-        function nextimg(n) {
-            displayimg(imageno += n)
+        if (n < 1) {
+            imageno = image.length;
         }
 
-        function currentSlide(n) {
-            displayimg(imageno = n)
+        for (i = 0; i < image.length; i++) {
+            image[i].style.display = "none";
         }
 
-        function displayimg(n) {
-            var i;
-            var image = document.getElementsByClassName("image");
-            var dots = document.getElementsByClassName("dot");
-
-            if (n > image.length) {
-                imageno = 1;
-            }
-
-            if (n < 1) {
-                imageno = image.length;
-            }
-
-            for (i = 0; i < image.length; i++) {
-                image[i].style.display = "none";
-            }
-
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-
-            image[imageno - 1].style.display = "block";
-            dots[imageno - 1].className += " active";
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
         }
-    </script>
-    <script src="static/swiper-bundle.min.js"></script>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="static/script.js"></script>
+        image[imageno - 1].style.display = "block";
+        dots[imageno - 1].className += " active";
+    }
+</script>
+<script src="static/swiper-bundle.min.js"></script>
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="static/script.js"></script>
 </body>
 
 </html>

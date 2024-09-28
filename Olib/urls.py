@@ -1,18 +1,17 @@
 from django.contrib import admin
 from django.urls import path
-from Home import views
+from Olib import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-   path("",views.index,name="Home"),
    path("signup",views.sign_up,name="Sign_up"),
    path("login",views.log_in,name="Login"),
    path("logout",views.user_logout,name="logout"),
    path("forgot",views.forgot_password,name="forgot_password"),
-   path("user_add",views.profile,name="Add_User"),
-   path("get_AllUser",views.getAllUser,name="GET_Users"),
+   path("",views.index,name="Home"),
    path("home",views.index,name="Home"),
+   path("view_book",views.view_book,name="Home"),
    path("profile",views.profile,name="Profile"),
 
 ]

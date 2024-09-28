@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="static/main-books.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="shortcut icon" type="image/x-icon" href="media/EduCat (4)_rm.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/EduCat (4)_rm.png">
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +65,7 @@
         border-radius: 8px;
         transition: 0.3s all ease;
     }
-    
+
     .oldp input:focus,
     .newp input:focus {
         outline: none;
@@ -81,7 +81,7 @@
         flex-direction: column;
         width: 100%;
     }
-    
+
     .c1,
     .c2{
         gap: 10px;
@@ -128,56 +128,44 @@
 </style>
 
 <body>
-   <!-- Header START -->
-   <header>
+<!-- Header START -->
+<header>
     <nav class="navigation">
         <div class="logo">
-            <a href="home"><img src="media/E-Learning-removebg-preview.png" alt="Logo" style="height: 150px;"></a>
+            <a href="Index.html"><img src="media/E-Learning-removebg-preview.png" alt="Logo" style="height: 150px;"></a>
         </div>
-        <div class="search-bar">
+        <!-- <div class="search-bar">
             <input type="text" placeholder="Search...">
-            <!-- <a href="#" style="display: flex; align-items: center;"><img src="assets/img/search.svg" alt="search" height="25px" width="25px"></a> -->
-        </div>
+            <a href="#" style="display: flex; align-items: center;"><img src="assets/img/search.svg" alt="search" height="25px" width="25px"></a>
+        </div> -->
         <button class="menu-btn">☰</button>
         <div class="sidebar">
             <div class="menu-content">
                 <a href="mycourse.php" class="buttons">My Books</a>
-                <a href="mycourse-completed.php" class="buttons">Completed Books</a>
-                <a href="mycourse-favourites.php" class="buttons" style="color:red; font-size: 1rem">❤</a>
+                <!-- <a href="mycourse-completed.php" class="buttons">Completed Books</a> -->
+                <a href="mycourse-favourites.php" class="buttons">Bookmark &nbsp; <img src="media/bookmark.png" alt="" style="height:15px; width: 15px;"></a>
                 <!-- <a href="myaccount-security.php" class="buttons ">Security</a> -->
-                <a href="myaccount.html" class="buttons">My Profile</a>
+                <!-- <a href="myaccount.html" class="buttons">My Profile</a> -->
             </div>
         </div>
     </nav>
 </header>
    <!-- Header END -->
-   <form method="post" action="" enctype="multipart/form-data">
+   <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container">
-        <div class="videocon">
-            <div class="leftprofile" id="leftprofile">
-                <img id="userImage" 
-                src="{% if user and user.photo %}{{ user.photo }}{% else %}media/teacher.png{% endif %}" 
-                alt="" 
-                style="cursor: pointer; ">
-
-                <input name="photo" 
-                type="file" id="imageInput" 
-                style="display: none;" value="{{ photo }}" 
-                accept="image/*">
-            </div>
             <div class="rightprofile">
                 <div class="c1">
                     <div class="oldp">
                         <label for="fn">Full Name</label>
                         <input placeholder="Your Full Name" 
                         type="text" id="fn" name="name" 
-                        value="{{ name }}">
+                        value="{{ user.first_name }}">
                     </div>
                     <div class="newp">
                         <label for="ln">User Name</label>
                         <input type="text" id="ln"
-                        value="{{ username }}">
+                        value="{{ user.username }}">
                     </div>
                 </div>
                 <div class="c2">
@@ -185,15 +173,14 @@
                         <label for="em">Email</label>
                         <input placeholder="Your Email" 
                         type="text" id="em" name="email" 
-                        value="{{ email }}">
-                        <p style="font-size: 12px; color: orange;">Once Email is updated you have to reverify it.</p>
+                        value="{{ user.email }}">
                     </div>
-                    <div class="newp">
-                        <label for="pn">Phone number</label>
-                        <input name="phone" placeholder="" 
-                        type="text" id="pn" name ="phone"
-                        value="{{ phone }}">
-                    </div>
+<!--                    <div class="newp">-->
+<!--                        <label for="pn">Phone number</label>-->
+<!--                        <input name="phone" placeholder="" -->
+<!--                        type="text" id="pn" name ="phone"-->
+<!--                        value="{{ phone }}">-->
+<!--                    </div>-->
                 </div>
                 <div class="c4" style="display:flex; gap:20px">
                     <a href="logout"><img src="media/logout.png" alt="" height="25px" width="25px">&nbsp;Logout</a>
@@ -206,53 +193,53 @@
     </div>
 </form>
 
-    <!-- Footer START -->
-    <footer class="footer-distributed">
+<!-- Footer START -->
+<footer class="footer-distributed">
 
-<div class="footer-left">
+    <div class="footer-left">
 
-    <img src="media/E-Learning-removebg-preview.png" alt="E-learning">
+        <img src="media/E-Learning-removebg-preview.png" alt="E-learning">
 
-    <p class="footer-links">
-        <a href="index.php" class="link-1">Home</a>
-        <a href="termsandconditions.php">Terms & Condition</a>
-        <a href="privacypolicy.php">Privacy Policy</a>
-        <a href="refundpolicy.php">Refund Policy</a>
-        <a href="contact.php">Contact</a>
-    </p>
+        <p class="footer-links">
+            <a href="index.php" class="link-1">Home</a>
+            <a href="termsandconditions.php">Terms & Condition</a>
+            <a href="privacypolicy.php">Privacy Policy</a>
+            <a href="refundpolicy.php">Refund Policy</a>
+            <a href="contact.php">Contact</a>
+        </p>
 
-    <p class="footer-company-name">E-learner © 2024</p>
-</div>
+        <p class="footer-company-name">E-learner © 2024</p>
+    </div>
 
-<div class="footer-center">
+    <div class="footer-center">
 
-    <div>
-        <i class="fa fa-map-marker"></i>
-        <p><span>Contact us:</span>
-            <span class="footer-connect-list">Address: <span class="fcl-data">LDRP, Sector-15, Gandhinagar</span>
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Contact us:</span>
+                <span class="footer-connect-list">Address: <span class="fcl-data">LDRP, Sector-15, Gandhinagar</span>
             </span>
-            <span class="footer-connect-list">Contact Number: <span class="fcl-data">
+                <span class="footer-connect-list">Contact Number: <span class="fcl-data">
                     +91 9978343950
                 </span>
                 <span class="footer-connect-list">Email: <span class="fcl-data">
                         priyanshu2512a@gmail.com
                     </span>
                 </span>
-        </p>
+            </p>
+        </div>
+
     </div>
 
-</div>
+    <div class="footer-right">
 
-<div class="footer-right">
+        <p class="footer-company-about">
+            <span>About E-Learning?</span>
+            Our e-Library provides easy access to a wide range of digital books, journals, and academic resources. We aim to make learning and research accessible to everyone.
+        </p>
 
-    <p class="footer-company-about">
-        <span>About E-Learning?</span>
-        Our e-Library provides easy access to a wide range of digital books, journals, and academic resources. We aim to make learning and research accessible to everyone.
-    </p>
-
-</div>
+    </div>
 </footer>
-    <!-- Footer END -->
+<!-- Footer END -->
 
 </body>
 <script>
@@ -276,7 +263,7 @@
         }
     });
 
-    
+
 </script>
 
 </html>

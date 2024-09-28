@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/login.css">
+    <link rel="shortcut icon" type="image/x-icon" href="media/EduCat (4)_rm.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Your Interest</title>
+</head>
+<style>
+    .input {
+        width: 24px !important;
+        height: 24px;
+    }
+
+    .inputs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 equal columns */
+        gap: 15px;
+        /* Space between grid items */
+        padding: 10px;
+    }
+
+    .login {
+        width: 54%;
+    }
+
+    .btn {
+        padding: 21px;
+        border-radius: 15px;
+        border: 1px solid gray;
+        box-shadow: 0px 0px 3px 1px rgb(192, 192, 192);
+        cursor: pointer;
+        background-color: #14213d;
+        font-size: 1.5rem;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        transition: 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 160px;
+    }
+
+    .btn:hover{
+        width: 200px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="leftimg">
+            <img src="media/Interest.png" alt="">
+        </div>
+        <form action="#" method="post" class="login">
+            <div class="main">
+                <div class="heading">
+                    <h1 style="font-size: 3rem;">What kind of book are you interested in ?</h1>
+                </div>
+                <div class="inputs">
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="History" class="input" style="width: max-content;"
+                            value="History">
+                        <label for="History" style="font-size: 2rem;">History</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Science" class="input" style="width: max-content;"
+                            value="Science">
+                        <label for="Science" style="font-size: 2rem;">Science</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Technology" class="input" style="width: max-content;"
+                            value="Technology">
+                        <label for="Technology" style="font-size: 2rem;">Technology</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Philosophy" class="input" style="width: max-content;"
+                            value="Philosophy">
+                        <label for="Philosophy" style="font-size: 2rem;">Philosophy</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Congresses" class="input" style="width: max-content;"
+                            value="Congresses">
+                        <label for="Congresses" style="font-size: 2rem;">Congresses</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Studyandteaching" class="input" style="width: max-content;"
+                            value="Study and teaching">
+                        <label for="Studyandteaching" style="font-size: 2rem;">Study and teaching</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Juvenileliterature" class="input"
+                            style="width: max-content;" value="Juvenile literature">
+                        <label for="Juvenileliterature" style="font-size: 2rem;">Juvenile literature</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Physics" class="input" style="width: max-content;"
+                            value="Physics">
+                        <label for="Physics" style="font-size: 2rem;">Physics</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Methodology" class="input" style="width: max-content;"
+                            value="Methodology">
+                        <label for="Methodology" style="font-size: 2rem;">Methodology</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="LifeSciences" class="input" style="width: max-content;"
+                            value="Life Sciences">
+                        <label for="LifeSciences" style="font-size: 2rem;">Life Sciences</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Socialaspects" class="input" style="width: max-content;"
+                            value="Social aspects">
+                        <label for="Socialaspects" style="font-size: 2rem;">Social aspects</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="General" class="input" style="width: max-content;"
+                            value="General">
+                        <label for="General" style="font-size: 2rem;">General</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Research" class="input" style="width: max-content;"
+                            value="Research">
+                        <label for="Research" style="font-size: 2rem;">Research</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Chemistry" class="input" style="width: max-content;"
+                            value="Chemistry">
+                        <label for="Chemistry" style="font-size: 2rem;">Chemistry</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Science/Mathematics" class="input"
+                            style="width: max-content;" value="Science/Mathematics">
+                        <label for="Science/Mathematics" style="font-size: 2rem;">Science/Mathematics</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Mathematics" class="input" style="width: max-content;"
+                            value="Mathematics">
+                        <label for="Mathematics" style="font-size: 2rem;">Mathematics</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Education" class="input" style="width: max-content;"
+                            value="Education">
+                        <label for="Education" style="font-size: 2rem;">Education</label>
+                    </div>
+                    <div class="checkoption">
+                        <input type="checkbox" name="c" id="Experiments" class="input" style="width: max-content;"
+                            value="Experiments">
+                        <label for="Experiments" style="font-size: 2rem;">Experiments</label>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" class="btn" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
