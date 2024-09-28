@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="static/main-books.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" type="image/x-icon" href="media/EduCat (4)_rm.png">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/swiper-bundle.min.css">
+    <title>Profile</title>
+</head>
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .videocon {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .leftprofile {
+        width: 20%;
+        height: 95%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .rightprofile {
+        width: 79%;
+        height: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .leftprofile img {
+        height: 36% !important;
+        width: 59% !important;
+        border-radius: 50%;
+        background-color: rgb(218, 218, 218);
+        overflow: hidden;
+        object-fit: fill;
+    }
+
+    .oldp input,
+    .newp input {
+        padding: 7px 10px;
+        border: 2px solid rgb(74 74 74 / 71%);
+        margin-top: 5px;
+        border-radius: 8px;
+        transition: 0.3s all ease;
+    }
+    
+    .oldp input:focus,
+    .newp input:focus {
+        outline: none;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .oldp,
+    .newp{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .c1,
+    .c2{
+        gap: 10px;
+        display: flex;
+        width: 100%;
+    }
+
+    .c3 .oldp{
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .c3 .oldp input{
+        width: 94%;
+    }
+
+    .c4 a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.5rem;
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+        width: fit-content;
+    }
+
+    .c5 button{
+        padding: 10px 25px;
+        border-radius: 10px;
+        border: 2px solid var(--btn-color);
+        background-color: var(--btn-color);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s all ease;
+    }
+
+    .c5 button:hover{
+        border: 2px solid var(--btn-color);
+        background-color: transparent;
+        color: var(--btn-color);
+    }
+</style>
+
+<body>
+   <!-- Header START -->
+   <header>
+    <nav class="navigation">
+        <div class="logo">
+            <a href="home"><img src="media/E-Learning-removebg-preview.png" alt="Logo" style="height: 150px;"></a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <!-- <a href="#" style="display: flex; align-items: center;"><img src="assets/img/search.svg" alt="search" height="25px" width="25px"></a> -->
+        </div>
+        <button class="menu-btn">☰</button>
+        <div class="sidebar">
+            <div class="menu-content">
+                <a href="mycourse.php" class="buttons">My Books</a>
+                <a href="mycourse-completed.php" class="buttons">Completed Books</a>
+                <a href="mycourse-favourites.php" class="buttons" style="color:red; font-size: 1rem">❤</a>
+                <!-- <a href="myaccount-security.php" class="buttons ">Security</a> -->
+                <a href="myaccount.html" class="buttons">My Profile</a>
+            </div>
+        </div>
+    </nav>
+</header>
+   <!-- Header END -->
+   <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+        <div class="videocon">
+            <div class="leftprofile" id="leftprofile">
+                <img id="userImage" 
+                src="{% if user and user.photo %}{{ user.photo }}{% else %}media/teacher.png{% endif %}" 
+                alt="" 
+                style="cursor: pointer; ">
+
+                <input name="photo" 
+                type="file" id="imageInput" 
+                style="display: none;" value="{{ photo }}" 
+                accept="image/*">
+            </div>
+            <div class="rightprofile">
+                <div class="c1">
+                    <div class="oldp">
+                        <label for="fn">Full Name</label>
+                        <input placeholder="Your Full Name" 
+                        type="text" id="fn" name="name" 
+                        value="{{ name }}">
+                    </div>
+                    <div class="newp">
+                        <label for="ln">User Name</label>
+                        <input type="text" id="ln"
+                        value="{{ username }}">
+                    </div>
+                </div>
+                <div class="c2">
+                    <div class="oldp">
+                        <label for="em">Email</label>
+                        <input placeholder="Your Email" 
+                        type="text" id="em" name="email" 
+                        value="{{ email }}">
+                        <p style="font-size: 12px; color: orange;">Once Email is updated you have to reverify it.</p>
+                    </div>
+                    <div class="newp">
+                        <label for="pn">Phone number</label>
+                        <input name="phone" placeholder="" 
+                        type="text" id="pn" name ="phone"
+                        value="{{ phone }}">
+                    </div>
+                </div>
+                <div class="c4" style="display:flex; gap:20px">
+                    <a href="logout"><img src="media/logout.png" alt="" height="25px" width="25px">&nbsp;Logout</a>
+                </div>
+                <div class="c5">
+                    <button type="submit" value="Submit" name="submit">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <!-- Footer START -->
+    <footer class="footer-distributed">
+
+<div class="footer-left">
+
+    <img src="media/E-Learning-removebg-preview.png" alt="E-learning">
+
+    <p class="footer-links">
+        <a href="index.php" class="link-1">Home</a>
+        <a href="termsandconditions.php">Terms & Condition</a>
+        <a href="privacypolicy.php">Privacy Policy</a>
+        <a href="refundpolicy.php">Refund Policy</a>
+        <a href="contact.php">Contact</a>
+    </p>
+
+    <p class="footer-company-name">E-learner © 2024</p>
+</div>
+
+<div class="footer-center">
+
+    <div>
+        <i class="fa fa-map-marker"></i>
+        <p><span>Contact us:</span>
+            <span class="footer-connect-list">Address: <span class="fcl-data">LDRP, Sector-15, Gandhinagar</span>
+            </span>
+            <span class="footer-connect-list">Contact Number: <span class="fcl-data">
+                    +91 9978343950
+                </span>
+                <span class="footer-connect-list">Email: <span class="fcl-data">
+                        priyanshu2512a@gmail.com
+                    </span>
+                </span>
+        </p>
+    </div>
+
+</div>
+
+<div class="footer-right">
+
+    <p class="footer-company-about">
+        <span>About E-Learning?</span>
+        Our e-Library provides easy access to a wide range of digital books, journals, and academic resources. We aim to make learning and research accessible to everyone.
+    </p>
+
+</div>
+</footer>
+    <!-- Footer END -->
+
+</body>
+<script>
+    const imageContainer = document.getElementById("leftprofile");
+    const imageInput = document.getElementById("imageInput");
+    const userImage = document.getElementById("userImage");
+
+    // Trigger the file input when the user clicks on the image container
+    imageContainer.addEventListener("click", () => {
+        imageInput.click();
+    });
+
+    // Listen for changes in the file input
+    imageInput.addEventListener("change", (event) => {
+        const selectedImage = event.target.files[0];
+
+        if (selectedImage) {
+            // Set the selected image as the source of the userImage
+            const imageURL = URL.createObjectURL(selectedImage);
+            userImage.src = imageURL;
+        }
+    });
+
+    
+</script>
+
+</html>

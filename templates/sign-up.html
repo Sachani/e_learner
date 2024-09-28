@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" type="image/x-icon" href="media/EduCat (4)_rm.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/login.css">
+    <title>Sign up</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="" method="post" class="login" id="signupform">
+            <div class="main">
+                <div class="heading">
+                    <h1>Sign up</h1>
+                </div>
+        {% if user.is_authenticated %}
+          
+      {% endif %}
+        
+              {% csrf_token %}
+              <fieldset style="border: none;">
+                {% if messages %}
+                  <ul class="messages">
+                  <!-- {% for message in messages %} -->
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  <!-- {% endfor %} -->
+                  </ul>
+                {% endif %}
+                <div class="inputs">
+                    <input type="text" name="fullname" class="input" placeholder="Full Name" pattern="^[^0-9]+$" title="Please enter a valid name without numbers" value="{{ first_name }}"autofocus required>
+                    <input type="text" name="username" class="input" placeholder="User Name" value="{{ username }}" autofocus required>
+                    <input type="password" name="password" class="input" placeholder="Password" pattern=".{8,}" title="Password must be at least 8 characters long" id="password" value="{{ password }}" required>
+                    <input type="password" name="confirm_password" class="input" placeholder="Confirm password" pattern=".{8,}" title="Password must be at least 8 characters long" oninput="checkPasswordMatch()" id="confirm-password" required>
+                </div>
+                <div class="button">
+                    <input type="submit" class="btn" value="Sign Up">
+                </div>
+                <div class="signup">
+                    Have an account? <a href="login">&nbsp;Sign In</a>
+                </div>
+            </div>
+        </fieldset>
+        </form>
+        <div class="leftimg">
+            <img src="media/study.png" alt="">
+        </div>
+    </div>
+    <script>
+        function checkPasswordMatch() {
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirm-password");
+
+            if (password.value !== confirmPassword.value) {
+            confirmPassword.setCustomValidity("Passwords do not match");
+            } else {
+            confirmPassword.setCustomValidity("");
+            }
+        }
+    </script>
+
+<script>
+        // document.getElementById('signupform').addEventListener('submit', function (event) {
+        //     // Prevent the form from submitting
+        //     event.preventDefault();
+
+        //     // Get the email input value
+        //     var emailInput = document.getElementById('emailID');
+        //     var email = emailInput.value.trim();
+
+        //     // Regular expression for basic email validation
+        //     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        //     // Check if the email is valid
+        //     if (emailRegex.test(email)) {
+        //         // Email is valid, you can submit the form or perform additional actions
+        //         document.getElementById('emailError').textContent = '';
+        //         // Here you can submit the form or perform other actions
+        //         alert('Email is valid.');
+        //     } else {
+        //         // Email is not valid, display an error message
+        //         document.getElementById('emailError').textContent = 'Invalid email format';
+        //     }
+        // });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+
+  .container {
+    width: 95.5%;
+    height: 91%;
+    border-radius: 25px;
+    background-color: rgba(247, 247, 247, 0.555);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login {
+    width: 30%;
+    /* background-color: rgb(255, 255, 255); */
+    height: 100%;
+    animation: fadeIn 0.8s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin: 20px; */
+  }
+
+  h1 {
+    text-align: center;
+    color: #14213d;
+  }
+
+  .input {
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 70%;
+    transition: 0.3s ease;
+  }
+
+
+  .input:focus{
+    box-shadow: 0px 0px 10px 2px rgb(199, 199, 199);
+    border-color: #fca311;
+    outline: none;
+    width: 80%;
+  }
+
+  .button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .btn {
+    padding: 12px 30px;
+    border-radius: 15px;
+    border: 1px solid gray;
+    box-shadow: 0px 0px 3px 1px rgb(192, 192, 192);
+    cursor: pointer;
+    background-color: #14213d;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 105px;
+  }
+
+  .btn:hover{
+    color: #14213d;
+    background-color: white;
+    width: 130px;
+    box-shadow: 0px 0px 7px 2px rgb(192, 192, 192);
+  }
+
+  .btn:active{
+    width: 108px;
+    box-shadow: 0px 0px 4px 1px rgb(192, 192, 192);
+  }
+
+  .leftimg {
+    /* margin: 20px; */
+    animation: fadeIn 1s ease;
+  }
+
+  .link{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a{
+    text-decoration: none;
+    color: #fca311;
+    transition: 0.3s ease;
+  }
+
+  a:hover{
+    color: #14213d;
+  }
+
+  .signup{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 20px;
+  }
+
+  .main{
+    /* border: 1px solid black; */
+    border-radius: 15px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }

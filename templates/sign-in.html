@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/login.css">
+  <link rel="shortcut icon" type="image/x-icon" href="media/EduCat (4)_rm.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <title>Sign In</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="leftimg">
+      <img src="media/study.png" alt="">
+    </div>
+    <form action="" method="post" class="login">
+      <div class="main">
+        <div class="heading">
+          <h1>Sign In</h1>
+        </div>
+        {% csrf_token %}
+              <fieldset style="border: none;">
+                {% if messages %}
+                  <ul class="messages">
+                  <!-- {% for message in messages %} -->
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  <!-- {% endfor %} -->
+                  </ul>
+                {% endif %}
+        <div class="inputs">
+          <input type="text" name="username" class="input" placeholder="Username" value="{{ username }}"autofocus required>
+          <input type="password" name="password" class="input" placeholder="Password" pattern=".{8,}" title="Password must be at least 8 characters long" value="{{ username }}" required>
+        </div>
+        <div class="link">
+          <a href="forgot">Forgot password?</a>
+        </div>
+        <div class="button">
+          <input type="submit" class="btn" value="Sign In">
+        </div>
+        <div class="signup">
+          Don't have an account? <a href="signup">&nbsp;Sign Up</a>
+        </div>
+      </div>
+    </fieldset>
+    </form>
+  </div>
+</body>
+
+</html>
