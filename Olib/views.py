@@ -11,6 +11,7 @@ import logging
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.db.models import Max
 
 # Create your views here.
 
@@ -165,12 +166,16 @@ def user_choice(request):
 
 
 def admin_index(request):
-    return render(request,"Admin-index.html")
+    max_user_id = User.objects.aggregate(Max('id'))['id__max']
+
+    return render(request,"Admin-index.html",{'max_user_id': max_user_id})
 
 def booklist(request):
     return render(request,"booklist.html")
 
 def add_book(request):
+
+    
     return render(request,"addbook.html")
 
 def book_category(request):
