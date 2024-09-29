@@ -6,12 +6,16 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model,logout
 from django.contrib.auth.decorators import login_required
 from Olib.forms import Login_Form, Signup_Form, UserProfileForm
-from .models import user_collection,user_interest,UserProfile
+from .models import *
+from .forms import CategoryForm
 import logging
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
 from django.db.models import Max
+from django.core.files.storage import FileSystemStorage
+from pymongo import MongoClient
+from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -173,12 +177,54 @@ def admin_index(request):
 def booklist(request):
     return render(request,"booklist.html")
 
+@csrf_exempt
 def add_book(request):
+    if request.method == 'POST':
+        # Retrieve form data
+        book_name = request.POST['BookName']
+        author_name = request.POST['AuthorName']
+        publisher_name = request.POST['PublisherName']
+        publication_date = request.POST['date']
+        categories = request.POST['Categories']
+        description = request.POST['Description']
 
-    
-    return render(request,"addbook.html")
+        # Handle file uploads
+        cover_image = request.FILES['CoverImage']
+        book_pdf = request.FILES['BookPDF']
+
+        # Save files to the media directory
+        fs = FileSystemStorage()
+        cover_image_path = fs.save(cover_image.name, cover_image)
+        book_pdf_path = fs.save(book_pdf.name, book_pdf)
+
+        # Format the date
+        try:
+            publication_date = datetime.strptime(publication_date, '%Y-%m-%d')
+        except ValueError:
+            return render(request, 'addbook.html', {'error': 'Invalid date format'})
+
+        # Store book details in MongoDB
+        new_book = {
+            'book_name': book_name,
+            'author_name': author_name,
+            'publisher_name': publisher_name,
+            'publication_date': publication_date,
+            'categories': categories,
+            'description': description,
+            'cover_image': cover_image_path,
+            'book_pdf': book_pdf_path,
+        }
+
+        # Insert the new book record into MongoDB
+        user_book.insert_one(new_book)
+
+        # Redirect to a success page or display a success message
+        return HttpResponse("<h2>success_page</h2>")
+
+    return render(request, "addbook.html")
 
 def book_category(request):
+
     return render(request,"booklist.html")
 
 def get_all(request):
@@ -188,7 +234,20 @@ def upload_pdf(request):
     return render(request,"addbook.html")
 
 def add_category(request):
-    return render(request,"addcategory.html")
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            category_name = request.POST.get('category_name')
+            # Assuming you are using a MongoDB model
+            CategoryForm.objects.update_one(
+                {},
+                {'$addToSet': {'selected_categories': category_name}}  # Use $addToSet to avoid duplicates
+            )
+            return redirect('categories')  # Redirect after successful submission
+    else:
+        form = CategoryForm()
+
+    return render(request, "addcategory.html", {'form': form})
 
 def add_user(request):
     return render(request,"adduser.html")

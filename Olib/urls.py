@@ -18,7 +18,7 @@ urlpatterns = [
    # admin
    path("host",views.admin_index,name="Admin-Home"),
    path("list_book",views.booklist,name="Books"),
-   path("add_book",views.add_book,name="Add_Book"),
+   path("add_book",views.add_book,name="add_book"),
    path("bookByCategory",views.book_category,name="BookByCategory"),
    path("get_users",views.get_all,name="All_Users"),
    path("upload_pdf",views.upload_pdf,name="Upload"),
