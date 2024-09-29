@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model,logout
 from django.contrib.auth.decorators import login_required
 from Olib.forms import Login_Form, Signup_Form, UserProfileForm
-from .models import user_collection  # Assuming this is your custom model for user profiles
+from .models import user_collection,user_interest,UserProfile
 import logging
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
@@ -14,13 +14,12 @@ from django.urls import reverse
 
 # Create your views here.
 
-
 # Set up logger
 logger = logging.getLogger(__name__)
 
 @login_required
 def index(request):
-    return render(request,"index.html");
+    return render(request,"index.html")
 
 def sign_up(request):
     if request.method == "POST":
@@ -66,6 +65,12 @@ def log_in(request):
 
         else:
             login(request, user)
+            UserProfile.objects.get_or_create(user=user)
+
+            # Redirect to user_choice if they haven't submitted interests yet
+            user_profile = UserProfile.objects.get(user=user)
+            if not user_profile.has_submitted_interests:
+                return redirect('/interest')
             messages.info(request, "Logged in Successfully")
             return redirect('/home')  # Redirect to profile view after successful login
     return render(request, "sign-in.html")
@@ -123,12 +128,38 @@ def profile(request):
     return render(request, 'myaccount.html',{'user': user})
 
 
-def getAllUser(request):
-    users = list(user_collection.find())
-    users_list = "<br>".join([f"{user['name']} - {user['username']} - {user['email']}" for user in users])  # Format users for display
-    return HttpResponse(users_list)
+# def getAllUser(request):
+#     users = list(user_collection.find())
+#     users_list = "<br>".join([f"{user['name']} - {user['username']} - {user['email']}" for user in users])  # Format users for display
+#     return HttpResponse(users_list)
 
 def view_book(request):
 
     return render(request,"book-overview.html")
+
+def user_choice(request):
+    user = request.user
+
+    # Check if the user has already submitted their interests
+    user_profile = UserProfile.objects.get(user=user)
+
+    if user_profile.has_submitted_interests:
+        return redirect('/home')  # Redirect to home if already submitted
+
+    if request.method == "POST":
+        interests = request.POST.getlist('c')
+
+        test = {
+            "username": user.username,
+            "interest": interests,
+        }
+        user_interest.insert_one(test)
+
+        # Update the user profile to mark that interests have been submitted
+        user_profile.has_submitted_interests = True
+        user_profile.save()
+
+        return redirect('/home')  # Redirect after saving interests
+
+    return render(request, "interest.html")
 
